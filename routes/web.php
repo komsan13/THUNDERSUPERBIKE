@@ -106,6 +106,17 @@ Route::group(['middleware' => ['Webpanel']], function () {
             Route::get('/status/{id}', [Webpanel\UserController::class, 'status'])->where(['id' => '[0-9]+']);
             Route::get('/destroy', [Webpanel\UserController::class, 'destroy']);
         });
+
+        Route::prefix('type')->group(function () {
+            Route::get('/', [Webpanel\typeController::class, 'index']);
+            Route::post('/datatable', [Webpanel\typeController::class, 'datatable']);
+            Route::get('/add', [Webpanel\typeController::class, 'add']);
+            Route::post('/add', [Webpanel\typeController::class, 'insert']);
+            Route::get('/{id}', [Webpanel\typeController::class, 'edit'])->where(['id' => '[0-9]+']);
+            Route::post('/{id}', [Webpanel\typeController::class, 'update'])->where(['id' => '[0-9]+']);
+            Route::get('/status/{id}', [Webpanel\typeController::class, 'status'])->where(['id' => '[0-9]+']);
+            Route::get('/destroy', [Webpanel\typeController::class, 'destroy']);
+        });
     });
 });
 
